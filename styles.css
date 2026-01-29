@@ -64,9 +64,12 @@ nav li {
     width: 10ch;
     text-align: center;
     list-style-type: none;
-    /* background-color: white;
-    border-radius: 24px; */
     padding: .5rem 1rem;
+}
+
+nav .highlight {
+    background-color: rgb(229, 229, 229);
+    border-radius: 16px;
 }
 
 .library {
@@ -173,4 +176,27 @@ input[type='checkbox'] {
     border: solid .15rem rgb(128, 128, 128);
     margin-top: 2ch;
     margin-right: 1ch;
+}
+
+/* JS button style */
+
+.removeBtn {
+    width: 3ch;
+    font-size: 1rem;
+    padding: .1rem;
+    border-radius: 32px;
+    border: 0;
+    background-color: rgb(144, 144, 144);
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 8px;
+}
+
+.checkboxWrap {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    position: absolute;
+    bottom: 3.5rem;
 }

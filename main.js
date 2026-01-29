@@ -1,4 +1,4 @@
-const myLibrary = [];
+var myLibrary = [];
 
 // Book constructor 
 function Book(title, author, pages, readStatus) {
@@ -15,6 +15,13 @@ Book.prototype.getId = function () {
         }
     }
 
+Book.prototype.toggleRead = function () {
+    if (this.readStatus === true) {
+        this.readStatus = false;
+    } else {
+        this.readStatus = true;
+    }
+}
 // Create Book using constructor and add it to myLibrary
 function addBookToLibrary(title, author, pages, readStatus) {
     const newBook = new Book(title, author, pages, readStatus);
@@ -25,6 +32,7 @@ function addBookToLibrary(title, author, pages, readStatus) {
 // Display the book on screen
 
 addBookToLibrary('The Success Equation', 'Michael J. Mauboussin', 320, true);
+addBookToLibrary('Madilog', 'Tan Malaka', 568, false);
 addBookToLibrary('Personal Diary', 'You', 27, true);
 
 const main = document.querySelector('main');
@@ -39,16 +47,31 @@ function displayBooks() {
     author.classList.add('author');
     const pages = document.createElement('p');
     pages.classList.add('pages');
+    const checkboxWrap = document.createElement('div');
+    checkboxWrap.classList.add('checkboxWrap');
+    const readStatus = document.createElement('input');
+    readStatus.classList.add('readStatus');
+    readStatus.type = 'checkbox';
+    const labelReadStatus = document.createElement('label');
 
     title.textContent = `${book.title}`;
     author.textContent = `by ${book.author}`;
-    pages.textContent = `${book.pages} pages`
-    
+    pages.textContent = `${book.pages} pages`;
+    if (book.readStatus === true) {
+        readStatus.checked = true;
+        labelReadStatus.textContent = `finished`;
+    } else {
+        readStatus.checked = false;
+        labelReadStatus.textContent = `to read`;
+    }
 
     main.appendChild(card);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
+    card.appendChild(checkboxWrap)
+    checkboxWrap.appendChild(readStatus);
+    checkboxWrap.appendChild(labelReadStatus);
 
     // remove button
     const removeBtn = document.createElement('button');
@@ -56,7 +79,7 @@ function displayBooks() {
     removeBtn.textContent = 'x';
     card.appendChild(removeBtn);
 
-    card.dataset.id = book.bookId;
+    card.setAttribute('data-id', book.bookId);
 })
 }
 
@@ -101,5 +124,39 @@ confirmBtn.addEventListener('click', event => {
 });
 
 // Remove Book Button\
-myLibrary.forEach((book) => {
+main.addEventListener('click', e => {
+    if (e.target.classList.contains('removeBtn')) {
+        const newLibrary = myLibrary.filter(book => book.bookId !== e.target.parentElement.dataset.id);
+        myLibrary = newLibrary;
+        console.log(myLibrary)
+        main.innerHTML = '';
+        displayBooks();
+    }
+})
+
+// Read Status Toggle
+const card = document.getElementsByClassName('card');
+const cardArr = Array.from(card);
+
+// cardArr.forEach((cards) => cards.getproto)
+
+// myLibrary.forEach(book => {
+//     main.addEventListener('click', e => {
+//     if (e.target.classList.contains('readStatus')) {
+//         book.toggleRead();
+//         main.innerHTML = '';
+//         displayBooks();
+//     }
+// })
+// })
+
+main.addEventListener('click', e => {
+    for (let index = 0; index < myLibrary.length; index++) {
+        const element = myLibrary[index];
+        if (e.target.classList.contains('readStatus') && e.target.parentElement.parentElement.dataset.id === element.bookId) {
+            element.toggleRead();
+            main.innerHTML = '';
+            displayBooks();
+        }
+    }
 })
