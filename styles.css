@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(237, 237, 237);
+    position: relative;
+}
+
+/* Upper Part */
+.frontOffice {
+    background-color: rgb(236, 236, 236);
+    padding: calc(2rem + 5%) calc(2rem + 10%);
+}
+
+h1 {
+    font-weight: 500;
+    margin-bottom: calc(.5rem + 1%);
+    font-size: 3rem;
+}
+
+#addBook {
+    padding: 1% 3%;
+    border-radius: 24px;
+    border: solid .15rem rgb(128, 128, 128);
+}
+
+#addBook:hover,
+.buttonDiv button:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+/* Lower Part */
+
+.hall {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 1fr;
+    justify-items: center;
+    box-shadow: 0 -.3rem .5rem rgb(195, 195, 195);
+}
+
+nav {
+    width: max-content;
+    padding: .5rem 1rem;
+    background-color: white;
+    box-shadow: 0 0 .7rem rgb(169, 169, 169);
+    margin: 3% 0;
+    border-radius: 24px;
+}
+
+nav ul {
+    display: flex;
+    white-space: nowrap;
+    gap: 2ch;
+    justify-content: center;
+}
+
+nav li {
+    width: 10ch;
+    text-align: center;
+    list-style-type: none;
+    /* background-color: white;
+    border-radius: 24px; */
+    padding: .5rem 1rem;
+}
+
+.library {
+    width: 100%;
+    padding: 1rem calc(1rem + 5%);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-columns: minmax(150px, 200px);
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 0 .5rem rgb(131, 131, 131);
+    padding: 1rem 2rem;
+    aspect-ratio: 1 / 1.3;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.title {
+    margin-top: 10%;
+}
+
+.author {
+    color: rgb(57, 57, 57);
+    font-style: italic;
+    font-size: .9rem;
+    margin-top: 6px;
+}
+
+.pages {
+    position: absolute;
+    bottom: 10%;
+    font-size: .9rem;
+    color: gray;
+}
+
+/* Dialog */
+#bookForm {
+    position: absolute;
+    background-color: rgb(236, 236, 236);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 12px;
+    width: calc(15ch + 20%);
+    border: 0;
+    box-shadow: 0 0 1rem rgb(110, 110, 110);
+}
+
+#bookForm::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+#bookForm form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#bookForm p {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1ch;
+}
+
+.aForm label {
+    font-size: 1rem;
+    color: rgb(70, 70, 70);
+}
+
+input[type='text'],
+input[type='number'] {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: .25rem;
+    border: gray;
+    height: 1.2rem;
+    padding: 0 1ch;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    margin-top: 1ch;
+}
+
+input[type='checkbox'] {
+    accent-color: black;
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.buttonDiv button {
+    padding: 2% 6%;
+    border-radius: 24px;
+    border: solid .15rem rgb(128, 128, 128);
+    margin-top: 2ch;
+    margin-right: 1ch;
+}

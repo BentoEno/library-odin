@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="frontOffice">
+            <h1>Library</h1>
+            <button id="addBook">add book +</button>
+        </div>
+        <div class="hall">
+            <nav>
+                <ul>
+                    <li>All</li>
+                    <li>Finished</li>
+                    <li>To Read</li>
+                </ul>
+            </nav>
+            <main class="library">
+            </main>
+        </div>
+    </div>
+    <dialog id="bookForm">
+                <form>
+                    <p>add your book!</p>
+                    <div class="aForm">
+                        <label for="title">what is the title?</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="aForm">
+                        <label for="author">who is the author?</label>
+                        <input type="text" id="author" name="author">
+                    </div>
+                    <div class="aForm">
+                        <label for="pages">how many pages?</label>
+                        <input type="number" id="pages" name="pages">
+                    </div>
+                    <div class="aForm checkbox">
+                        <input type="checkbox" name="read?" id="readStatus">
+                        <label for="readStatus">have you read this book?</label>
+                    </div>
+                    <div class="buttonDiv">
+                        <button value="cancel" formmethod="dialog">cancel</button>
+                        <button id="confirmBtn" value="default" autofocus>confirm</button>
+                    </div>
+                </form>
+            </dialog>
+    <script src="main.js" defer></script>
+</body>
+</html>
