@@ -1,27 +1,29 @@
 var myLibrary = [];
 
-// Book constructor 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.bookId;
-}
+class Book {
+    bookId;
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 
-Book.prototype.getId = function () {
+    getId() {
         if (!this.bookId) {
             this.bookId = crypto.randomUUID();
         }
     }
 
-Book.prototype.toggleRead = function () {
-    if (this.readStatus === true) {
+    toggleRead() {
+        if (this.readStatus === true) {
         this.readStatus = false;
-    } else {
-        this.readStatus = true;
+        } else {
+            this.readStatus = true;
+        }
     }
 }
+
 // Create Book using constructor and add it to myLibrary
 function addBookToLibrary(title, author, pages, readStatus) {
     const newBook = new Book(title, author, pages, readStatus);
@@ -137,18 +139,6 @@ main.addEventListener('click', e => {
 // Read Status Toggle
 const card = document.getElementsByClassName('card');
 const cardArr = Array.from(card);
-
-// cardArr.forEach((cards) => cards.getproto)
-
-// myLibrary.forEach(book => {
-//     main.addEventListener('click', e => {
-//     if (e.target.classList.contains('readStatus')) {
-//         book.toggleRead();
-//         main.innerHTML = '';
-//         displayBooks();
-//     }
-// })
-// })
 
 main.addEventListener('click', e => {
     for (let index = 0; index < myLibrary.length; index++) {
